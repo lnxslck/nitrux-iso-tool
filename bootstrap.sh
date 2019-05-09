@@ -57,7 +57,7 @@ apt -yy -qq dist-upgrade > /dev/null
 # -- firejail should be automatically used by the daemon to sandbox AppImages.
 
 appimgd='
-https://github.com/AppImage/appimaged/releases/download/continuous/appimaged_1-alpha-gitff7f673.travis117_amd64.deb
+https://github.com/AppImage/appimaged/releases/download/continuous/appimaged_1-alpha-git81574b4.travis142_amd64.deb
 '
 
 mkdir appimaged_deb
@@ -75,10 +75,10 @@ rm -r appimaged_deb
 printf "INSTALLING NEW KERNEL."
 
 kfiles='
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.39/linux-headers-4.19.39-041939_4.19.39-041939.201905040435_all.deb
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.39/linux-headers-4.19.39-041939-generic_4.19.39-041939.201905040435_amd64.deb
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.39/linux-image-unsigned-4.19.39-041939-generic_4.19.39-041939.201905040435_amd64.deb
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.39/linux-modules-4.19.39-041939-generic_4.19.39-041939.201905040435_amd64.deb
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1/linux-headers-5.1.0-050100_5.1.0-050100.201905052130_all.deb
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1/linux-headers-5.1.0-050100-generic_5.1.0-050100.201905052130_amd64.deb
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1/linux-image-unsigned-5.1.0-050100-generic_5.1.0-050100.201905052130_amd64.deb
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1/linux-modules-5.1.0-050100-generic_5.1.0-050100.201905052130_amd64.deb
 '
 
 mkdir latest_kernel
@@ -142,7 +142,7 @@ sed -i "/env_reset/d" /etc/sudoers
 # -- Rename AppImageUpdate and znx.
 
 APPS_SYS='
-https://github.com/Nitrux/znx/releases/download/continuous-stable/znx_stable
+https://github.com/Nitrux/znx/releases/download/continuous-development/znx_development
 https://github.com/AppImage/AppImageUpdate/releases/download/continuous/AppImageUpdate-x86_64.AppImage
 '
 
@@ -168,7 +168,7 @@ done
 chmod +x /etc/skel/Applications/*
 
 mv /Applications/AppImageUpdate-x86_64.AppImage /Applications/AppImageUpdate
-mv /Applications/znx_stable /Applications/znx
+mv /Applications/znx_development /Applications/znx
 
 # -- Add znx-gui.
 
@@ -233,6 +233,7 @@ mkdir -p /etc/skel/.local/share/applications
 cp /configs/install.itch.io.desktop /etc/skel/.local/share/applications
 cp /configs/install-itch-io.sh /etc/skel/.config
 
+
 # -- Update the initramfs.
 
 cat /configs/persistence >> /usr/share/initramfs-tools/scripts/casper-bottom/05mountpoints_lupin
@@ -248,3 +249,4 @@ apt -yy -qq clean > /dev/null
 # -- Use sources.list.nitrux for release.
 
 /bin/cp /configs/sources.list.nitrux /etc/apt/sources.list
+
