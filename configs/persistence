@@ -9,7 +9,7 @@ for o in $(cat /proc/cmdline); do
 		znx_overlays=*)
 
 			ZNX_OVERLAYS=${o#znx_overlays=}
-			ZNX_OVERLAYS=${ZNX_OVERLAYS//,/ }
+			ZNX_OVERLAYS=$(printf $ZNX_OVERLAYS | sed 's/,/ /g')
 
 		;;
 
@@ -26,21 +26,17 @@ IMAGE_PERSISTENT_DATA=${IMAGE_PERSISTENT_DATA%/*}
 
 # -- Mount the requested overlays.
 
-[ ${#ZNX_OVERLAYS} -gt 0 ] && {
+for k in $ZNX_OVERLAYS; do
 
-	for k in $ZNX_OVERLAYS; do
+	mkdir -p /root/isodevice/.overlay-tmp/$k.w
 
-		mkdir -p /root/isodevice/.overlay-tmp/$k.w
+	[ -d /root/$k ] ||
+		mkdir -p /root/$k
 
-		[ -d /root/$k ] ||
-			mkdir -p /root/$k
+	mount -t overlay \
+		-o lowerdir=/root/$k \
+		-o upperdir=/root/isodevice/$IMAGE_PERSISTENT_DATA/$k \
+		-o workdir=/root/isodevice/.overlay-tmp/$k.w \
+		. /root/$k
 
-		mount -t overlay \
-			-o lowerdir=/root/$k \
-			-o upperdir=/root/isodevice/$IMAGE_PERSISTENT_DATA/$k \
-			-o workdir=/root/isodevice/.overlay-tmp/$k.w \
-			. /root/$k
-
-	done
-
-}
+done
