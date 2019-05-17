@@ -1,27 +1,30 @@
 #! /bin/sh
 
-# -- Determine the overlay mountpoints from /proc/cmdline.
-
 for o in $(cat /proc/cmdline); do
 
 	case $o in
 
-		znx_overlays=*)
+		# -- Determine the overlay mountpoints from /proc/cmdline.
 
-			ZNX_OVERLAYS=${o#znx_overlays=}
+		ZNX_OVERLAYS=*)
+
+			ZNX_OVERLAYS=${o#ZNX_OVERLAYS=}
 			ZNX_OVERLAYS=$(printf $ZNX_OVERLAYS | sed 's/,/ /g')
+
+		;;
+
+		# -- Find the persistent storage directory.
+
+		iso-scan/filename=*)
+
+			PERSISTENT_DATA=${o#iso-scan/filename=}
+			PERSISTENT_DATA=$(dirname $PERSISTENT_DATA)/DATA
 
 		;;
 
 	esac
 
 done
-
-
-# -- Find the persistent storage directory.
-
-IMAGE_PERSISTENT_DATA=$(grep /cdrom /proc/mounts | cut -d ' ' -f 1)
-IMAGE_PERSISTENT_DATA=${IMAGE_PERSISTENT_DATA%/*}
 
 
 # -- Mount the requested overlays.
@@ -35,7 +38,7 @@ for k in $ZNX_OVERLAYS; do
 
 	mount -t overlay \
 		-o lowerdir=/root/$k \
-		-o upperdir=/root/isodevice/$IMAGE_PERSISTENT_DATA/$k \
+		-o upperdir=/root/isodevice/$PERSISTENT_DATA/$k \
 		-o workdir=/root/isodevice/.overlay-tmp/$k.w \
 		. /root/$k
 
