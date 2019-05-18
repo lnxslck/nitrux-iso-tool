@@ -31,10 +31,11 @@ done
 
 for k in $ZNX_OVERLAYS; do
 
-	mkdir -p /root/isodevice/.overlay-tmp/$k.w
-
-	[ -d /root/$k ] ||
-		mkdir -p /root/$k
+	mkdir -p \
+		/root/$k \
+		/root/isodevice/.overlay-tmp/$k.w \
+		/root/isodevice/$PERSISTENT_DATA/$k \
+		/root/isodevice/.overlay-tmp/$k.w
 
 	mount -t overlay \
 		-o lowerdir=/root/$k \
