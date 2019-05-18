@@ -250,3 +250,7 @@ apt -yy -qq clean > /dev/null
 
 /bin/cp /configs/sources.list.nitrux /etc/apt/sources.list
 
+# -- Use custom casper.conf.
+
+/bin/cp /configs/casper.conf /etc/casper.conf
+
