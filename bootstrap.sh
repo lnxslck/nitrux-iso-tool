@@ -252,5 +252,5 @@ apt -yy -qq clean > /dev/null
 
 # -- Use custom casper.conf.
 
-/bin/cp /configs/casper.conf /etc/casper.conf
+pv /configs/casper.conf /etc/casper.conf
 
