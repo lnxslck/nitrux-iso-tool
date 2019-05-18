@@ -22,7 +22,7 @@ nomad-desktop
 # -- Install basic packages.
 
 apt -qq update > /dev/null
-apt -yy -qq install apt-transport-https wget ca-certificates gnupg2 apt-utils --no-install-recommends > /dev/null
+apt -yy -qq install apt-transport-https wget ca-certificates gnupg2 apt-utils pv --no-install-recommends > /dev/null
 
 
 # -- Add key for Neon repository.
@@ -233,6 +233,10 @@ mkdir -p /etc/skel/.local/share/applications
 cp /configs/install.itch.io.desktop /etc/skel/.local/share/applications
 cp /configs/install-itch-io.sh /etc/skel/.config
 
+# -- Use custom casper.conf.
+
+pv /configs/casper.conf /etc/casper.conf
+
 
 # -- Update the initramfs.
 
@@ -249,8 +253,4 @@ apt -yy -qq clean > /dev/null
 # -- Use sources.list.nitrux for release.
 
 /bin/cp /configs/sources.list.nitrux /etc/apt/sources.list
-
-# -- Use custom casper.conf.
-
-pv /configs/casper.conf /etc/casper.conf
 
