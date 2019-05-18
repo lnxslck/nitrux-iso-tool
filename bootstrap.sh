@@ -233,10 +233,6 @@ mkdir -p /etc/skel/.local/share/applications
 cp /configs/install.itch.io.desktop /etc/skel/.local/share/applications
 cp /configs/install-itch-io.sh /etc/skel/.config
 
-# -- Use custom casper.conf.
-
-pv /configs/casper.conf /etc/casper.conf
-
 
 # -- Update the initramfs.
 
@@ -254,3 +250,7 @@ apt -yy -qq clean > /dev/null
 
 /bin/cp /configs/sources.list.nitrux /etc/apt/sources.list
 
+
+# -- Use custom casper.conf.
+
+pv /configs/casper.conf > /etc/casper.conf
