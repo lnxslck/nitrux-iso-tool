@@ -57,7 +57,7 @@ apt -yy -qq dist-upgrade > /dev/null
 # -- firejail should be automatically used by the daemon to sandbox AppImages.
 
 appimgd='
-https://github.com/AppImage/appimaged/releases/download/continuous/appimaged_1-alpha-git81574b4.travis142_amd64.deb
+https://github.com/AppImage/appimaged/releases/download/continuous/appimaged_1-alpha-git1c7986a.travis146_amd64.deb
 '
 
 mkdir appimaged_deb
@@ -75,10 +75,10 @@ rm -r appimaged_deb
 printf "INSTALLING NEW KERNEL."
 
 kfiles='
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1/linux-headers-5.1.0-050100_5.1.0-050100.201905052130_all.deb
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1/linux-headers-5.1.0-050100-generic_5.1.0-050100.201905052130_amd64.deb
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1/linux-image-unsigned-5.1.0-050100-generic_5.1.0-050100.201905052130_amd64.deb
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1/linux-modules-5.1.0-050100-generic_5.1.0-050100.201905052130_amd64.deb
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1.3/linux-headers-5.1.3-050103_5.1.3-050103.201905161442_all.deb
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1.3/linux-headers-5.1.3-050103-generic_5.1.3-050103.201905161442_amd64.deb
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1.3/linux-image-unsigned-5.1.3-050103-generic_5.1.3-050103.201905161442_amd64.deb
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1.3/linux-modules-5.1.3-050103-generic_5.1.3-050103.201905161442_amd64.deb
 '
 
 mkdir latest_kernel
