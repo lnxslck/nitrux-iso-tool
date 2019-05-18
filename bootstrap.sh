@@ -75,10 +75,10 @@ rm -r appimaged_deb
 printf "INSTALLING NEW KERNEL."
 
 kfiles='
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1.3/linux-headers-5.1.3-050103_5.1.3-050103.201905161442_all.deb
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1.3/linux-headers-5.1.3-050103-generic_5.1.3-050103.201905161442_amd64.deb
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1.3/linux-image-unsigned-5.1.3-050103-generic_5.1.3-050103.201905161442_amd64.deb
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.1.3/linux-modules-5.1.3-050103-generic_5.1.3-050103.201905161442_amd64.deb
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.0.17/linux-headers-5.0.17-050017_5.0.17-050017.201905161857_all.deb
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.0.17/linux-headers-5.0.17-050017-generic_5.0.17-050017.201905161857_amd64.deb
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.0.17/linux-image-unsigned-5.0.17-050017-generic_5.0.17-050017.201905161857_amd64.deb
+https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.0.17/linux-modules-5.0.17-050017-generic_5.0.17-050017.201905161857_amd64.deb
 '
 
 mkdir latest_kernel
