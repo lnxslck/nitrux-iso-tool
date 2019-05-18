@@ -18,7 +18,7 @@ for o in $(cat /proc/cmdline); do
 		iso-scan/filename=*)
 
 			PERSISTENT_DATA=${o#iso-scan/filename=}
-			PERSISTENT_DATA=$(dirname $PERSISTENT_DATA)/DATA
+			PERSISTENT_DATA=${PERSISTENT_DATA%/*}/DATA
 
 		;;
 
