@@ -234,6 +234,11 @@ cp /configs/install.itch.io.desktop /etc/skel/.local/share/applications
 cp /configs/install-itch-io.sh /etc/skel/.config
 
 
+# -- Use custom casper.conf.
+
+cp /configs/casper.conf /etc/casper.conf
+
+
 # -- Update the initramfs.
 
 cat /configs/persistence >> /usr/share/initramfs-tools/scripts/casper-bottom/05mountpoints_lupin
@@ -246,11 +251,7 @@ apt -yy -qq purge --remove casper lupin-casper > /dev/null
 apt -yy -qq autoremove > /dev/null
 apt -yy -qq clean > /dev/null
 
+
 # -- Use sources.list.nitrux for release.
 
-/bin/cp /configs/sources.list.nitrux /etc/apt/sources.list
-
-
-# -- Use custom casper.conf.
-
-pv /configs/casper.conf > /etc/casper.conf
+cp /configs/sources.list.nitrux /etc/apt/sources.list
