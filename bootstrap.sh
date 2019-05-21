@@ -33,6 +33,7 @@ apt -yy -qq install apt-transport-https wget ca-certificates gnupg2 apt-utils pv
 	wget -q https://archive.neon.kde.org/public.key -O neon.key
 	printf "ee86878b3be00f5c99da50974ee7c5141a163d0e00fccb889398f1a33e112584 neon.key" | sha256sum -c &&
 	apt-key add neon.key > /dev/null
+	rm neon.key
 
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1B69B2DA > /dev/null
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1118213C > /dev/null
@@ -234,9 +235,9 @@ cp /configs/install.itch.io.desktop /etc/skel/.local/share/applications
 cp /configs/install-itch-io.sh /etc/skel/.config
 
 
-# # -- Use custom casper.conf.
-# 
-# cp /configs/casper.conf /etc/casper.conf
+# -- Stop kernel printk from flooding the console
+
+sysctl -w kernel.printk="0 0 0 0"
 
 
 # -- Update the initramfs.
