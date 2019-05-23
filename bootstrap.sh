@@ -235,9 +235,9 @@ cp /configs/install.itch.io.desktop /etc/skel/.local/share/applications
 cp /configs/install-itch-io.sh /etc/skel/.config
 
 
-# -- Stop kernel printk from flooding the console
+# -- Stop kernel printk from flooding the console and other settings.
 
-sysctl -w kernel.printk="0 0 0 0"
+cp /configs/sysctl.conf /etc/sysctl.conf
 
 
 # -- Update the initramfs.
