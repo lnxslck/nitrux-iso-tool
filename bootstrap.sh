@@ -110,7 +110,7 @@ for x in $kfiles; do
 	wget -q -P liquorix_kernel $x
 done
 
-dpkg -iR liquorix_kernel > /dev/null
+dpkg -iR liquorix_kernel
 rm -r liquorix_kernel
 
 # -- Install util-linux 2.33.1.
