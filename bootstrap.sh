@@ -111,7 +111,7 @@ for x in $kfiles; do
 	wget -q -P liquorix_kernel $x
 done
 
-dpkg -iR liquorix_kernel
+dpkg -iR liquorix_kernel > /dev/null
 rm -r liquorix_kernel
 
 # -- Install util-linux 2.33.1.
@@ -131,7 +131,7 @@ for x in $util_linux; do
 	wget -q -P util_linux_233 $x
 done
 
-dpkg --force-all -iR util_linux_233 > /dev/null
+dpkg --force-all -iR util_linux_233
 rm -r util_linux_233
 
 # -- Install libc6 2.29.
@@ -149,7 +149,7 @@ for x in $libc6; do
 	wget -q -P libc6_229 $x
 done
 
-dpkg --force-all -iR libc6_229 > /dev/null
+dpkg --force-all -iR libc6_229
 rm -r libc6_229
 
 
@@ -260,6 +260,11 @@ cp /configs/install-itch-io.sh /etc/skel/.config
 # -- Stop kernel printk from flooding the console and other settings.
 
 cp /configs/sysctl.conf /etc/sysctl.conf
+
+
+# -- Add Window title plasmoid.
+
+cp -a /configs/org.kde.windowtitle /usr/share/plasma/plasmoids
 
 
 # -- Update the initramfs.
