@@ -131,7 +131,7 @@ for x in $util_linux; do
 	wget -q -P util_linux_233 $x
 done
 
-dpkg --force-all -iR util_linux_233
+dpkg --force-all -iR util_linux_233 > /dev/null
 rm -r util_linux_233
 
 # -- Install libc6 2.29.
@@ -149,7 +149,7 @@ for x in $libc6; do
 	wget -q -P libc6_229 $x
 done
 
-dpkg --force-all -iR libc6_229
+dpkg --force-all -iR libc6_229 > /dev/null
 rm -r libc6_229
 
 
@@ -275,8 +275,8 @@ update-initramfs -u
 
 # -- Clean the filesystem.
 
-apt -yy -qq purge --remove casper lupin-casper > /dev/null
-apt -yy -qq autoremove > /dev/null
+apt -yy -qq purge --remove casper lupin-casper
+apt -yy -qq autoremove
 apt -yy -qq clean > /dev/null
 
 
