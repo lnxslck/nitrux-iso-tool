@@ -71,26 +71,47 @@ dpkg -iR appimaged_deb > /dev/null
 rm -r appimaged_deb
 
 
-# -- Install the latest LTS kernel.
+# # -- Install the latest LTS kernel.
+# 
+# printf "INSTALLING LTS KERNEL."
+# 
+# kfiles='
+# https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.0.17/linux-headers-5.0.17-050017_5.0.17-050017.201905161857_all.deb
+# https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.0.17/linux-headers-5.0.17-050017-generic_5.0.17-050017.201905161857_amd64.deb
+# https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.0.17/linux-image-unsigned-5.0.17-050017-generic_5.0.17-050017.201905161857_amd64.deb
+# https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.0.17/linux-modules-5.0.17-050017-generic_5.0.17-050017.201905161857_amd64.deb
+# '
+# 
+# mkdir latest_kernel
+# 
+# for x in $kfiles; do
+# 	printf "$x"
+# 	wget -q -P latest_kernel $x
+# done
+# 
+# dpkg -iR latest_kernel > /dev/null
+# rm -r latest_kernel
 
-printf "INSTALLING NEW KERNEL."
+# -- Install liquorix kernel.
+
+printf "INSTALLING liquorix KERNEL."
 
 kfiles='
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.0.17/linux-headers-5.0.17-050017_5.0.17-050017.201905161857_all.deb
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.0.17/linux-headers-5.0.17-050017-generic_5.0.17-050017.201905161857_amd64.deb
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.0.17/linux-image-unsigned-5.0.17-050017-generic_5.0.17-050017.201905161857_amd64.deb
-https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.0.17/linux-modules-5.0.17-050017-generic_5.0.17-050017.201905161857_amd64.deb
+https://launchpad.net/~damentz/+archive/ubuntu/liquorix/+files/linux-headers-5.0.0-18.1-liquorix-amd64_5.0-18ubuntu1~bionic_amd64.deb
+https://launchpad.net/~damentz/+archive/ubuntu/liquorix/+files/linux-headers-liquorix-amd64_5.0-18ubuntu1~bionic_amd64.deb
+https://launchpad.net/~damentz/+archive/ubuntu/liquorix/+files/linux-image-5.0.0-18.1-liquorix-amd64_5.0-18ubuntu1~bionic_amd64.deb
+https://launchpad.net/~damentz/+archive/ubuntu/liquorix/+files/linux-image-liquorix-amd64_5.0-18ubuntu1~bionic_amd64.deb
 '
 
-mkdir latest_kernel
+mkdir liquorix_kernel
 
 for x in $kfiles; do
 	printf "$x"
-	wget -q -P latest_kernel $x
+	wget -q -P liquorix_kernel $x
 done
 
-dpkg -iR latest_kernel > /dev/null
-rm -r latest_kernel
+dpkg -iR liquorix_kernel > /dev/null
+rm -r liquorix_kernel
 
 # -- Install util-linux 2.33.1.
 
@@ -159,11 +180,11 @@ mkdir -p /etc/skel/Applications
 APPS_USR='
 http://libreoffice.soluzioniopen.com/stable/basic/LibreOffice-6.2.3-x86_64.AppImage
 http://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/AppImage/Waterfox-latest-x86_64.AppImage
-https://raw.githubusercontent.com/UriHerrera/storage/master/AppImages/VLC-3.0.0.gitfeb851a.glibc2.17-x86-64.AppImage
+http://repo.nxos.org/appimages/VLC-3.0.0.gitfeb851a.glibc2.17-x86-64.AppImage
 '
 
 for x in $APPS_USR; do
-    wget -q -P /etc/skel/Applications $x
+    wget -q -P -U "Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36" /etc/skel/Applications $x
 done
 
 chmod +x /etc/skel/Applications/*
