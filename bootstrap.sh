@@ -141,6 +141,7 @@ http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc6_2.29-0ubuntu2_amd64.deb
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/locales_2.29-0ubuntu2_all.deb
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc-bin_2.29-0ubuntu2_amd64.deb
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc-dev-bin_2.29-0ubuntu2_amd64.deb
+http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc6-dev_2.29-0ubuntu2_amd64.deb
 '
 
 mkdir libc6_229
@@ -182,11 +183,11 @@ mkdir -p /etc/skel/Applications
 APPS_USR='
 http://libreoffice.soluzioniopen.com/stable/basic/LibreOffice-6.2.3-x86_64.AppImage
 http://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/AppImage/Waterfox-latest-x86_64.AppImage
-http://repo.nxos.org/appimages/VLC-3.0.0.gitfeb851a.glibc2.17-x86-64.AppImage
+https://github.com/UriHerrera/storage/blob/master/AppImages/VLC-3.0.0.gitfeb851a.glibc2.17-x86-64.AppImage
 '
 
 for x in $APPS_USR; do
-    wget -q -P -U "Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36" /etc/skel/Applications $x
+    wget -q -P /etc/skel/Applications $x
 done
 
 chmod +x /etc/skel/Applications/*
@@ -276,8 +277,8 @@ update-initramfs -u
 
 # -- Clean the filesystem.
 
-apt -yy -qq purge --remove casper lupin-casper
-apt -yy -qq autoremove
+apt -yy -qq purge --remove casper lupin-casper > /dev/null
+apt -yy -qq autoremove > /dev/null
 apt -yy -qq clean > /dev/null
 
 
