@@ -16,6 +16,7 @@ casper
 lupin-casper
 xz-utils
 nomad-desktop
+libelf-dev
 '
 
 
