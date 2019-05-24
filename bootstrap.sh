@@ -140,6 +140,7 @@ libc6='
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc6_2.29-0ubuntu2_amd64.deb
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/locales_2.29-0ubuntu2_all.deb
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc-bin_2.29-0ubuntu2_amd64.deb
+http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc-dev-bin_2.29-0ubuntu2_amd64.deb
 '
 
 mkdir libc6_229
