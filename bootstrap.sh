@@ -15,7 +15,6 @@ cifs-utils
 casper
 lupin-casper
 xz-utils
-nomad-desktop
 libelf-dev
 '
 
@@ -23,7 +22,7 @@ libelf-dev
 # -- Install basic packages.
 
 apt -qq update > /dev/null
-apt -yy -qq install apt-transport-https wget ca-certificates gnupg2 apt-utils pv --no-install-recommends > /dev/null
+apt -yy -qq install apt-transport-https wget ca-certificates gnupg2 apt-utils sudo --no-install-recommends > /dev/null
 
 
 # -- Add key for Neon repository.
@@ -53,8 +52,6 @@ http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/locales_2.29-0ubuntu2_all.deb
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc-bin_2.29-0ubuntu2_amd64.deb
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc-dev-bin_2.29-0ubuntu2_amd64.deb
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc6-dev_2.29-0ubuntu2_amd64.deb
-http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-libc-dev_5.0.0-15.16_amd64.deb
-http://mirrors.kernel.org/ubuntu/pool/main/f/file/file_5.35-4_amd64.deb
 '
 
 mkdir libc6_229
