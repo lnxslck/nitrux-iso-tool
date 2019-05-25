@@ -54,6 +54,7 @@ http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc-bin_2.29-0ubuntu2_amd64.
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc-dev-bin_2.29-0ubuntu2_amd64.deb
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc6-dev_2.29-0ubuntu2_amd64.deb
 http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-libc-dev_5.0.0-15.16_amd64.deb
+http://mirrors.kernel.org/ubuntu/pool/main/f/file/file_5.35-4_amd64.deb
 '
 
 mkdir libc6_229
@@ -69,8 +70,8 @@ rm -r libc6_229
 
 # -- Update packages list and install packages. Install Nomad Desktop meta package and base-files package avoiding recommended packages.
 
-apt update
-apt -yy -qq upgrade
+apt -qq update > /dev/null
+apt -yy -qq upgrade > /dev/null
 apt -yy -qq install ${PACKAGES//\\n/ } --no-install-recommends
 apt -yy -qq purge --remove vlc > /dev/null
 apt -yy -qq dist-upgrade > /dev/null
