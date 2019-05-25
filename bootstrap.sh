@@ -17,7 +17,6 @@ lupin-casper
 xz-utils
 nomad-desktop
 libelf-dev
-linux-libc-dev
 '
 
 
@@ -54,6 +53,7 @@ http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/locales_2.29-0ubuntu2_all.deb
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc-bin_2.29-0ubuntu2_amd64.deb
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc-dev-bin_2.29-0ubuntu2_amd64.deb
 http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc6-dev_2.29-0ubuntu2_amd64.deb
+http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-libc-dev_5.0.0-15.16_amd64.deb
 '
 
 mkdir libc6_229
