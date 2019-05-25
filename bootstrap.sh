@@ -16,7 +16,7 @@ casper
 lupin-casper
 xz-utils
 libelf-dev
-plasma-workspace
+nomad-desktop
 '
 
 
