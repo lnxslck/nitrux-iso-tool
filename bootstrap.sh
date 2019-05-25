@@ -22,7 +22,7 @@ libelf-dev
 # -- Install basic packages.
 
 apt -qq update > /dev/null
-apt -yy -qq install apt-transport-https wget ca-certificates gnupg2 apt-utils sudo linux-libc-dev file --no-install-recommends > /dev/null
+apt -yy -qq install apt-transport-https wget ca-certificates gnupg2 apt-utils sudo linux-libc-dev file initramfs-tools libkrb5-3 --no-install-recommends > /dev/null
 
 
 # -- Add key for Neon repository.
