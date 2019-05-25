@@ -23,7 +23,7 @@ nomad-desktop
 # -- Install basic packages.
 
 apt -qq update > /dev/null
-apt -yy -qq install apt-transport-https wget ca-certificates gnupg2 apt-utils sudo linux-libc-dev file initramfs-tools libkrb5-3 phonon4qt5 phonon4qt5-backend-gstreamer --no-install-recommends > /dev/null
+apt -yy -qq install apt-transport-https wget ca-certificates gnupg2 apt-utils sudo linux-libc-dev file initramfs-tools libkrb5-3 phonon4qt5 phonon4qt5-backend-gstreamer phonon4qt5-backend --no-install-recommends > /dev/null
 
 
 # -- Add key for Neon repository.
@@ -64,6 +64,26 @@ done
 
 dpkg --force-all -iR libc6_229 > /dev/null
 rm -r libc6_229
+
+# -- Install util-linux 2.33.1.
+
+util_linux='
+http://mirrors.kernel.org/ubuntu/pool/main/libc/libcap-ng/libcap-ng0_0.7.9-2_amd64.deb
+http://mirrors.kernel.org/ubuntu/pool/main/u/util-linux/libsmartcols1_2.33.1-0.1ubuntu2_amd64.deb
+http://mirrors.kernel.org/ubuntu/pool/main/n/ncurses/libtinfo6_6.1+20181013-2ubuntu2_amd64.deb
+http://mirrors.kernel.org/ubuntu/pool/main/s/shadow/login_4.5-1.1ubuntu2_amd64.deb
+http://mirrors.kernel.org/ubuntu/pool/main/u/util-linux/util-linux_2.33.1-0.1ubuntu2_amd64.deb
+'
+
+mkdir util_linux_233
+
+for x in $util_linux; do
+	printf "$x"
+	wget -q -P util_linux_233 $x
+done
+
+dpkg --force-all -iR util_linux_233 > /dev/null
+rm -r util_linux_233
 
 
 # -- Update packages list and install packages. Install Nomad Desktop meta package and base-files package avoiding recommended packages.
@@ -133,26 +153,6 @@ done
 
 dpkg -iR liquorix_kernel > /dev/null
 rm -r liquorix_kernel
-
-# -- Install util-linux 2.33.1.
-
-util_linux='
-http://mirrors.kernel.org/ubuntu/pool/main/libc/libcap-ng/libcap-ng0_0.7.9-2_amd64.deb
-http://mirrors.kernel.org/ubuntu/pool/main/u/util-linux/libsmartcols1_2.33.1-0.1ubuntu2_amd64.deb
-http://mirrors.kernel.org/ubuntu/pool/main/n/ncurses/libtinfo6_6.1+20181013-2ubuntu2_amd64.deb
-http://mirrors.kernel.org/ubuntu/pool/main/s/shadow/login_4.5-1.1ubuntu2_amd64.deb
-http://mirrors.kernel.org/ubuntu/pool/main/u/util-linux/util-linux_2.33.1-0.1ubuntu2_amd64.deb
-'
-
-mkdir util_linux_233
-
-for x in $util_linux; do
-	printf "$x"
-	wget -q -P util_linux_233 $x
-done
-
-dpkg --force-all -iR util_linux_233 > /dev/null
-rm -r util_linux_233
 
 
 # -- Add /Applications to $PATH.
