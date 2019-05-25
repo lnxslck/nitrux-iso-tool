@@ -16,11 +16,8 @@ deb http://archive.neon.kde.org/user bionic main
 # Nitrux Repos #
 ################
 
-deb http://repo.nxos.org/stable nxos main
-deb http://repo.nxos.org/testing nxos main
-deb http://repo.nxos.org/development nxos main
-
 deb http://repo.nxos.org/nomad-desktop nxos main
+deb http://repo.nxos.org/nomad-desktop-dev nxos main
 
 
 ####################

@@ -68,7 +68,7 @@ for x in $appimgd; do
 	wget -q -P appimaged_deb $x
 done
 
-dpkg -iR appimaged_deb > /dev/null
+dpkg -iR appimaged_deb
 rm -r appimaged_deb
 
 
