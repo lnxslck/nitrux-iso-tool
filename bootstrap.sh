@@ -22,7 +22,7 @@ libelf-dev
 # -- Install basic packages.
 
 apt -qq update > /dev/null
-apt -yy -qq install apt-transport-https wget ca-certificates gnupg2 apt-utils sudo --no-install-recommends > /dev/null
+apt -yy -qq install apt-transport-https wget ca-certificates gnupg2 apt-utils sudo linux-libc-dev --no-install-recommends > /dev/null
 
 
 # -- Add key for Neon repository.
@@ -69,7 +69,7 @@ rm -r libc6_229
 
 apt -qq update > /dev/null
 apt -yy -qq upgrade > /dev/null
-apt -yy -qq install ${PACKAGES//\\n/ } --no-install-recommends
+apt -yy install ${PACKAGES//\\n/ } --no-install-recommends
 apt -yy -qq purge --remove vlc > /dev/null
 apt -yy -qq dist-upgrade > /dev/null
 
