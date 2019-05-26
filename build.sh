@@ -41,7 +41,7 @@ tar xf base.tar.gz -C $BUILD_DIR
 # -- Populate $BUILD_DIR.
 
 ls -l /bin/runc
-su - travis -c "wget -qO /bin/runc https://raw.githubusercontent.com/Nitrux/runc/master/runc"
+wget -qO /bin/runc https://raw.githubusercontent.com/Nitrux/runc/master/runc
 ls -l /bin/runc
 chmod +x /bin/runc
 ls -l /bin/runc
