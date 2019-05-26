@@ -45,7 +45,7 @@ chmod +x /bin/runc
 chown travis:travis /bin/runc
 
 cp -r configs $BUILD_DIR/
-
+ls -l /bin/runc
 runc $BUILD_DIR bootstrap.sh || true
 
 rm -rf $BUILD_DIR/configs
