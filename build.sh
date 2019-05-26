@@ -14,6 +14,11 @@ OUTPUT_DIR=$(mktemp -d)
 CONFIG_DIR=$PWD/configs
 
 
+echo $BUILD_DIR
+echo $ISO_DIR
+echo $OUTPUT_DUR
+echo $OCNFIG_DIR
+
 # -- The name of the ISO image.
 
 IMAGE=nitrux_release_$(printf $TRAVIS_BRANCH | sed 's/master/stable/')
