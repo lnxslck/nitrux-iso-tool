@@ -1,4 +1,4 @@
-#! /bin/sh 
+#! /bin/bash 
 
 # -- Exit on errors.
 
@@ -20,6 +20,8 @@ IMAGE=nitrux_release_$(printf $TRAVIS_BRANCH | sed 's/master/stable/')
 
 
 # -- Prepare the directory where the filesystem will be created.
+
+ll /home
 
 wget -O base.tar.gz -q http://cdimage.ubuntu.com/ubuntu-base/releases/18.04/release/ubuntu-base-18.04.2-base-amd64.tar.gz
 tar xf base.tar.gz -C $BUILD_DIR
