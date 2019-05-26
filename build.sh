@@ -31,12 +31,14 @@ IMAGE=nitrux_release_$(printf $TRAVIS_BRANCH | sed 's/master/stable/')
 
 ls -l /home
 
+cd $BUILD_DIR
 wget -O base.tar.gz -q http://cdimage.ubuntu.com/ubuntu-base/releases/18.04/release/ubuntu-base-18.04.2-base-amd64.tar.gz
 #su - travis -c "wget -O base.tar.gz -q http://cdimage.ubuntu.com/ubuntu-base/releases/18.04/release/ubuntu-base-18.04.2-base-amd64.tar.gz"
-ls -l /tmp
-tar xf base.tar.gz -C $BUILD_DIR
+ls -l $BUILD_DIR
+tar xf base.tar.gz
+#tar xf base.tar.gz -C $BUILD_DIR
 #su - travis -c "tar xf base.tar.gz -C $BUILD_DIR"
-
+ls -l
 
 # -- Populate $BUILD_DIR.
 
