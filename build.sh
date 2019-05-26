@@ -10,14 +10,17 @@ set -e
 BUILD_DIR=$(mktemp -d)
 ISO_DIR=$(mktemp -d)
 OUTPUT_DIR=$(mktemp -d)
-
 CONFIG_DIR=$PWD/configs
 
+chown -R travis:travis $BUILD_DIR
+chown -R travis:travis $ISO_DIR
+chown -R travis:travis $OUTPUT_DIR
+chown -R travis:travis $CONFIG_DIR
 
 echo $BUILD_DIR
 echo $ISO_DIR
 echo $OUTPUT_DUR
-echo $OCNFIG_DIR
+echo $CONFIG_DIR
 
 # -- The name of the ISO image.
 
