@@ -42,6 +42,7 @@ tar xf base.tar.gz -C $BUILD_DIR
 
 su - travis -c "wget -qO /bin/runc https://raw.githubusercontent.com/Nitrux/runc/master/runc"
 chmod +x /bin/runc
+chown travis:travis /bin/runc
 
 cp -r configs $BUILD_DIR/
 
