@@ -1,4 +1,7 @@
 sudo: required
+before_script:
+  - echo "export TRAVIS_HOME=$TRAVIS_HOME" | cat - ~/.bashrc > ~/.bashrc.mod
+  - mv -v ~/.bashrc.mod ~/.bashrc
 script:
 - sudo apt-get -qq update > /dev/null
 - sudo apt-get -yy -qq install util-linux squashfs-tools zsync xorriso grub-common gnupg2 wget  > /dev/null
