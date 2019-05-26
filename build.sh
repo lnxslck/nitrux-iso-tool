@@ -43,7 +43,9 @@ ls -l
 # -- Populate $BUILD_DIR.
 
 ls -l /bin/runc
-wget -qO /bin/runc https://raw.githubusercontent.com/Nitrux/runc/master/runc
+#wget -qO /bin/runc https://raw.githubusercontent.com/Nitrux/runc/master/runc
+wget -qO https://raw.githubusercontent.com/Nitrux/runc/master/runc
+cp runc /bin/runc
 ls -l /bin/runc
 chmod +x /bin/runc
 ls -l /bin/runc
