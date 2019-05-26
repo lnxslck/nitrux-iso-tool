@@ -1,7 +1,7 @@
 sudo: required
 script:
 - sudo apt-get -qq update > /dev/null
-- sudo apt-get -yy -qq install util-linux squashfs-tools zsync xorriso grub-common > /dev/null
+- sudo apt-get -yy -qq install util-linux squashfs-tools zsync xorriso grub-common gnupg2 wget  > /dev/null
   grub2-common grub-efi-amd64-bin sshpass apt-utils mtools --no-install-recommends > /dev/null
 - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 15866BAFD9BCC4F3C1E0DFC7D69548E1C17EAB57
 - sudo bash build.sh
